@@ -1,10 +1,10 @@
 import './NavBar.css';
-import CartWidget from './CartWidget';
+import CartWidget from '../CartWidget/CartWidget';
 
 const NavBar = () => {
     return (
         <div className="menu-container">
-            <img src={require('./img/messi.jpg')} />
+            <img src={require('../img/messi.jpg')} />
             <ul>
                 <li><a href="#">OPCION 1</a></li>
                 <li><a href="#">OPCION 2</a></li>
