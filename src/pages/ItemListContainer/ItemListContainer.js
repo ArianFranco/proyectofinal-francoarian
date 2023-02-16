@@ -14,34 +14,19 @@ const arreglo = [
 const ItemListContainer = ({greeting}) => {
     const [products, setProducts] = useState([]);
 
-const getProducs = () => fetch('https://fakestoreapi.com/products', {
-    method: 'GET'
-})
+    const getProducts = () => {
+        fetch('https://fakestoreapi.com/products')
+        .then((response) => response.json())
+        .then((data) => setProducts(data))
+        .catch((error) => console.log(error));
+    }
 
 
-useEffect(() => {
-    getProducs
-    .then((res) => {
-        return res.json();
-    })
-    .then((response) => {
-        setProducts(response);
-    })
-    .catch((error) => console.log(error));
-})
+    useEffect(() => {
+        getProducts()
+        })
 
-// return (
-//      <div>
-//          {greeting}
-//          <ItemCount />
-//          <ul>
-//             {products.map((producto) => (
-//                 <li key={prodcuto.id}>{prodcuto.name}</li>
-//             ))}
-//          </ul>
-//          <ItemList productos={products} />
-//      </div>
-// )
+ 
 }
 
 export default ItemListContainer;

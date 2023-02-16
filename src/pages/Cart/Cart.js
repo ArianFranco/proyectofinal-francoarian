@@ -29,14 +29,7 @@ const Cart = () => {
             const {name, price, id} = product;
             return {name, price, id}
         }),
-        // items: cart.map((product) => {
-        //     return {
-        //         name: product.name,
-        //         price: product.price,
-        //         id: product.id
-        //     }
 
-        // }),
         total: cart.reduce((acc, current) => 
             acc + current.price * current.quantity, 0)
         }
