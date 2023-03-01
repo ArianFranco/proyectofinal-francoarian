@@ -13,6 +13,7 @@ const arreglo = [
 
 const ItemListContainer = ({greeting}) => {
     const [products, setProducts] = useState([]);
+    console.log(products)
 
     const getProducts = () => {
         fetch('https://fakestoreapi.com/products')
@@ -23,8 +24,8 @@ const ItemListContainer = ({greeting}) => {
 
 
     useEffect(() => {
-        getProducts()
-        })
+        getProducts();
+    }, []);
 
  
 }

@@ -14,8 +14,8 @@ function App() {
       <BrowserRouter>
       <NavBar />
       <Routes>
-      <Route path='*' element={<Error />} />
       <Route path='/' element={<ItemListContainer />} />
+      <Route path='*' element={<Error />} />
       <Route path='category/:category' element={<ItemListContainer />} />
       <Route path='item/:id' element={<ItemDetailContainer />} />
     </Routes>
