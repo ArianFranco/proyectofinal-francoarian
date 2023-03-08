@@ -1,5 +1,4 @@
 import './ItemCount.css'
-import { useState } from 'react';
 
 const ItemCount = ({
     contador,
@@ -7,7 +6,6 @@ const ItemCount = ({
     stock,
     getNumRandom,
 }) => {
-    const [contador, actualizaValor] = useState(0)
     const NumRandom = 10
     const onAdd = () => {
         if(stock === contador){
