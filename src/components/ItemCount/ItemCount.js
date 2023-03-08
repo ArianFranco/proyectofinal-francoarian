@@ -1,21 +1,27 @@
 import './ItemCount.css'
 import { useState } from 'react';
 
-const ItemCount = () => {
-    const [contador, setContador] = useState(0)
-    const stock = 24
-    const sumar = () => {
+const ItemCount = ({
+    contador,
+    actualizaValor,
+    stock,
+    getNumRandom,
+}) => {
+    const [contador, actualizaValor] = useState(0)
+    const NumRandom = 10
+    const onAdd = () => {
         if(stock === contador){
             alert('has llegado al limite del stock')
             return
         }
-        setContador (contador +1)
+        actualizaValor (contador +1)
+        getNumRandom(NumRandom)
     };
     const restar = () => {
         if(contador === 0){
             return
         }
-        setContador(contador -1)
+        actualizaValor(contador -1)
     };
     return (
     <div className="counter">
@@ -24,9 +30,8 @@ const ItemCount = () => {
             <div>
                 <span>{contador}</span>
             </div>
-            <button onClick={sumar}>+</button>
+            <button onClick={onAdd}>+</button>
         </div>
-        <button>Agregar al carrito</button>
         </div>)
 };
 

@@ -1,19 +1,15 @@
 import ItemCount from '../../components/ItemCount/ItemCount'
 import ItemList from '../../components/ItemList/ItemList'
 import { useEffect, useState } from "react";
+import { getFirestore, getDocs, collection } from 'firebase/firestore';
 
-const arreglo = [
-    { name: 'producto 1', id: 'sj323' },
-    { name: 'producto 2', id: 'sj323' },
-    { name: 'producto 3', id: 'sj323' },
-    { name: 'producto 4', id: 'sj323' },
-    { name: 'producto 5', id: 'sj323' },
-    { name: 'producto 6', id: 'sj323' },
-];
+
 
 const ItemListContainer = ({greeting}) => {
     const [products, setProducts] = useState([]);
+    const [filteredProducts, setFilteredProducts] = useState ([])
     console.log(products)
+
 
     const getProducts = () => {
         fetch('https://fakestoreapi.com/products')
@@ -26,6 +22,14 @@ const ItemListContainer = ({greeting}) => {
     useEffect(() => {
         getProducts();
     }, []);
+
+    return (
+        <div>
+            {greeting}
+            <ItemCount />
+            <ItemList productos={products} />
+        </div>
+    )
 
  
 }
