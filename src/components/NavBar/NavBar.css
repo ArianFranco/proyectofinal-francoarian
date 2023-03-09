@@ -1,4 +1,4 @@
-.menu-container{
+.navBar{
     margin: 0;
     padding: 0;
     
@@ -9,10 +9,10 @@
     align-items: center;
     background-color: rgb(18, 193, 224);       
 }
-.menu-container img {
+.navBar img {
     height: 78px;
 }
-.menu-container ul {
+.navBar ul {
     padding: 0;
     display: flex;
     flex-direction: row;
@@ -20,7 +20,7 @@
     
 }
 
-.menu-container ul li a {
+.navBar ul li a {
     color: white;
     text-decoration: none;    
     margin: 0 10px 10px 0;

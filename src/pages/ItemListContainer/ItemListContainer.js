@@ -19,12 +19,17 @@ const ItemListContainer = ({greeting}) => {
         }
     });
 
-    // const getProducts = () => {
-    //     fetch('https://fakestoreapi.com/products')
-    //     .then((response) => response.json())
-    //     .then((data) => setProducts(data))
-    //     .catch((error) => console.log(error));
-    // }
+    // const addProduct = fetch('https://fakestoreapi.com/products', {
+    //     method: 'POST'
+    //     body: JSON.stringify({
+    //         title: 'test product',
+    //         price: 13.5,
+    //         description: 'lorem ipsum set',
+    //         image: 'https://i.pracatar.cc',
+    //         category: 'electronic'
+    //     })
+    // })
+
 
 useEffect (() => {
     getProducts
@@ -36,9 +41,6 @@ useEffect (() => {
     })
     .catch((error) => console.log(error))
 }, []); 
-    // useEffect(() => {
-    //     getProducts();
-    // }, []);
 
     useEffect (() => {
         if (category) {
@@ -46,7 +48,7 @@ useEffect (() => {
             ? category.replace('%20','')
             : category
             console.log(removeCharacters)
-            const filteredProducts = products.fulter((product) => {
+            const filteredProducts = products.filter((product) => {
                 return product.category === removeCharacters
             })
             setFilteredProducts (filteredProducts)

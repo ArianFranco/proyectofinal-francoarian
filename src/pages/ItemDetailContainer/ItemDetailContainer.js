@@ -8,7 +8,7 @@ const ItemDetailContainer = () => {
     const {id} = useParams()
     console.log(id)
 
-const getProducts = fetch(`https://fakestoreapi.com/products${id}`, {
+const getProduct = fetch(`https://fakestoreapi.com/products${id}`, {
     method: 'GET',
 });
     useEffect(() => {
@@ -17,7 +17,7 @@ const getProducts = fetch(`https://fakestoreapi.com/products${id}`, {
                 return resp.json()
             })
             .then((data) => {
-            setSingleProduct(data);
+                setSingleProduct(data);
 
             })
             .catch((error) =>{
