@@ -12,7 +12,6 @@ const CartProvider = ({children}) => {
             category: item.category,
         }
         setCart ([...cart, newProduct]);
-        console.log (cart);
 }
 return (
     <CartContext.Provider value={{cart, addItem}}>
