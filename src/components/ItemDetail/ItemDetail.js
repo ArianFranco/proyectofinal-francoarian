@@ -5,7 +5,7 @@ import { CartContext } from "../../context/CartContext";
 const ItemDetail = ({ product }) => {
     const {addItem} = useContext (CartContext)
     const [contador,setContador] = useState(1)
-    const stock = 5
+    const stock = 15
 
     const getNumRandom = (numero) => {
         console.log('El numero es' + numero)
@@ -24,7 +24,9 @@ const ItemDetail = ({ product }) => {
             getNumRandom={getNumRandom} 
             />
             <div>
-                <button onClick={() => addItem(product, contador)}> Agregar al carrito </button>
+                <button onClick={() => addItem(product, contador)}>
+                    Agregar al carrito {' '}
+                </button>
             </div>
         </div>
 

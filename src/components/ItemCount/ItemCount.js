@@ -10,7 +10,7 @@ const ItemCount = ({
     const onAdd = () => {
         if(stock === contador){
             alert('has llegado al limite del stock')
-            return
+            return;
         }
         actualizaValor (contador + 1);
         getNumRandom(NumRandom);
@@ -31,7 +31,8 @@ const ItemCount = ({
             </div>
             <button onClick={onAdd}>+</button>
         </div>
-        </div>)
+        </div>
+        )
 };
 
 export default ItemCount
