@@ -12,15 +12,16 @@ const ItemCount = ({
             alert('has llegado al limite del stock')
             return
         }
-        actualizaValor (contador +1)
-        getNumRandom(NumRandom)
+        actualizaValor (contador + 1);
+        getNumRandom(NumRandom);
     };
     const restar = () => {
-        if(contador === 0){
+        if(contador === 0) {
             return
         }
         actualizaValor(contador -1)
     };
+    
     return (
     <div className="counter">
         <div className="controllers">

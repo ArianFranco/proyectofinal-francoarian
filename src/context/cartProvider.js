@@ -9,9 +9,10 @@ const CartProvider = ({children}) => {
             name: item.title,
             price: item.price,
             quantity: quantity,
-            category: item,category,
+            category: item.category,
         }
         setCart ([...cart, newProduct]);
+        console.log (cart);
 }
 return (
     <CartContext.Provider value={{cart, addItem}}>

@@ -1,11 +1,12 @@
 import ItemCount from "../ItemCount/ItemCount";
-import { useState, useContext } from "react";
+import { useState, useContext } from "react"; 
 import { CartContext } from "../../context/CartContext";
 
 const ItemDetail = ({ product }) => {
     const {addItem} = useContext (CartContext)
     const [contador,setContador] = useState(1)
-    const stock = 4
+    const stock = 5
+
     const getNumRandom = (numero) => {
         console.log('El numero es' + numero)
     }
@@ -18,14 +19,12 @@ const ItemDetail = ({ product }) => {
             <h3>{product.description}</h3>
             <ItemCount
             contador={contador}
-            actualizador={setContador}
+            actualizaValor={setContador}
             stock={stock}
             getNumRandom={getNumRandom} 
             />
             <div>
-                <button onClick={() => addItem (product, contador)}>
-                    Agregar al carrito {' '}
-                </button>
+                <button onClick={() => addItem(product, contador)}> Agregar al carrito </button>
             </div>
         </div>
 
