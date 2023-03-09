@@ -1,28 +1,26 @@
 import NavBar from './components/NavBar/NavBar';
 import ItemListContainer from './pages/ItemListContainer/ItemListContainer';
 import ItemDetailContainer from './pages/ItemDetailContainer/ItemDetailContainer.js';
-import './App.css';
 import Error from './pages/Error/Error';
-
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import CartProvider from './context/cartProvider';
+import Cart from './pages/Cart/Cart';
 
 
 function App() {
   return (
+    <CartProvider>
       <BrowserRouter>
-        <CartProvider>
           <NavBar />
           <Routes>
             <Route path="/" element={<ItemListContainer />} />
             <Route path="*" element={<Error />} />
             <Route path="/category/:category" element={<ItemListContainer />} />
             <Route path="item/:id" element={<ItemDetailContainer />} />
+            <Route path="cart" element={<Cart />} />
           </Routes>
-          <div>footer det</div>
-        </CartProvider>
       </BrowserRouter>
-
+    </CartProvider>
   );
 }
 

@@ -1,14 +1,23 @@
 import './CartWidget.css';
-import { useContext, useEffect } from 'react';
-import { CartContext } from '../../context/CartContext';
+import { useContext, useEffect, useState } from 'react';
+import { cartContext } from '../../context/cartContext';
 
 const CartWidget = () => {
-    const { cart } = useContext(CartContext)
+    const { cart } = useContext(cartContext)
+    const [total, setTotal] = useState(0)
+
+    useEffect(() => {
+    setTotal(
+        cart?.reduce((prev, curr) =>{
+            console.log(prev, curr)
+            return prev + curr.quantity
+        }, 0)
+    )
+    }, [cart])
     return (
         <div className='copa-container'>
-            {cart.length}
+            {total}
             <img src={require('../img/copa.png')} />
-            {/* <span className='copa-items'>3</span> */}
         </div>
     );
 };

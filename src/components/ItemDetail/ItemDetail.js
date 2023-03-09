@@ -1,9 +1,9 @@
 import ItemCount from "../ItemCount/ItemCount";
 import { useState, useContext } from "react"; 
-import { CartContext } from "../../context/CartContext";
+import { cartContext } from "../../context/cartContext";
 
 const ItemDetail = ({ product }) => {
-    const {addItem} = useContext (CartContext)
+    const {addItem} = useContext (cartContext)
     const [contador,setContador] = useState(1)
     const stock = 15
 

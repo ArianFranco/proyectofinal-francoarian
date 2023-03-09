@@ -2,10 +2,11 @@ import ItemCount from '../../components/ItemCount/ItemCount'
 import ItemList from '../../components/ItemList/ItemList'
 import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
+import Loading from '../../components/Loading/Loading';
 
 
 
-const ItemListContainer = ({greeting}) => {
+const ItemListContainer = () => {
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState ([])
     const [loading, setLoading] = useState(true)
@@ -32,14 +33,18 @@ const ItemListContainer = ({greeting}) => {
 
 
 useEffect (() => {
-    getProducts
-    .then((res) =>{
-        return res.json()
-    })
-    .then((response) => {
-        setProducts (response)
-    })
-    .catch((error) => console.log(error))
+    setTimeout (() => {
+        getProducts
+        .then((res) =>{
+            return res.json()
+        })
+        .then((response) => {
+            setLoading(false)
+            setProducts (response)
+        })
+        .catch((error) => console.log(error))
+    }, 3000)
+
 }, []); 
 
     useEffect (() => {
@@ -57,10 +62,10 @@ useEffect (() => {
 
     return (
         <div>
-            {greeting}
-            <ItemCount />
-            <ItemList productos={category ? filteredProducts : products} />
-            <h1>Este es un producto especifico</h1>
+            {loading === true 
+            ? <Loading/>
+            : <ItemList productos={category ? filteredProducts : products} />
+        }
         </div>
     )
 }
