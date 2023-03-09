@@ -1,7 +1,6 @@
 import ItemCount from '../../components/ItemCount/ItemCount'
 import ItemList from '../../components/ItemList/ItemList'
 import { useEffect, useState } from "react";
-import { getFirestore, getDocs, collection } from 'firebase/firestore';
 import { useParams } from 'react-router-dom';
 
 
@@ -13,18 +12,33 @@ const ItemListContainer = ({greeting}) => {
     const { category } = useParams ()
     console.log(products)
 
+    const getProducts = fetch('https://fakestoreapi.com/products', {
+        method: 'GET',
+        headers: {
+            'content-type': 'json',
+        }
+    });
 
-    const getProducts = () => {
-        fetch('https://fakestoreapi.com/products')
-        .then((response) => response.json())
-        .then((data) => setProducts(data))
-        .catch((error) => console.log(error));
-    }
+    // const getProducts = () => {
+    //     fetch('https://fakestoreapi.com/products')
+    //     .then((response) => response.json())
+    //     .then((data) => setProducts(data))
+    //     .catch((error) => console.log(error));
+    // }
 
-
-    useEffect(() => {
-        getProducts();
-    }, []);
+useEffect (() => {
+    getProducts
+    .then((res) =>{
+        return res.json()
+    })
+    .then((response) => {
+        setProducts (response)
+    })
+    .catch((error) => console.log(error))
+}, []); 
+    // useEffect(() => {
+    //     getProducts();
+    // }, []);
 
     useEffect (() => {
         if (category) {
@@ -43,11 +57,10 @@ const ItemListContainer = ({greeting}) => {
         <div>
             {greeting}
             <ItemCount />
-            <ItemList productos={products} />
+            <ItemList productos={category ? filteredProducts : products} />
+            <h1>Este es un producto especifico</h1>
         </div>
     )
-
- 
 }
 
 export default ItemListContainer;

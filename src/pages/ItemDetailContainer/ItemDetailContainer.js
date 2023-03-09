@@ -1,28 +1,29 @@
 import './ItemDetailContainer.css';
-import ItemDetail from '../../components/ItemDetail/ItemDetail';
-
 import { useEffect, useState } from 'react';
+import ItemDetail from '../../components/ItemDetail/ItemDetail';
 import { useParams } from 'react-router-dom';
-import { getFirestore, doc, getDoc } from 'firebase/firestore';
 
 const ItemDetailContainer = () => {
-    const [singleProduct, setSingleProduct] = useState({});
-    const {id} = useParams();
+    const [singleProduct, setSingleProduct] = useState({})
+    const {id} = useParams()
+    console.log(id)
 
-    const getProduct = () => {
-        const db = getFirestore();
-        const querySnapshot = doc(db, 'items', id);
-
-        getDoc(querySnapshot)
-            .then((response) => {
-                setSingleProduct({id: response.id, ...response.data()});
-            })
-            .catch((error) => {console.log(error)});
-    };
-
+const getProducts = fetch(`https://fakestoreapi.com/products${id}`, {
+    method: 'GET',
+});
     useEffect(() => {
-        getProduct();
-    },[]);
+        getProduct
+            .then((resp) => {
+                return resp.json()
+            })
+            .then((data) => {
+            setSingleProduct(data);
+
+            })
+            .catch((error) =>{
+                console.log(error)
+        })
+    }, []);
 
     return (
         <div>
